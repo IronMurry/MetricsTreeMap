@@ -43,7 +43,7 @@ int minFontSize = 1;
 PFont font;
 
 void setup() {
-  size(800,600);
+  size(1920,1080);
    
   font = createFont("miso-bold.ttf", 10);
   smooth();
@@ -83,14 +83,15 @@ MetricMapModel buildModelFromMetrics(String[] metricsAsLines) {
   MetricMapModel mapData = new MetricMapModel();
   
   for (int i=0; i < metricsAsLines.length; i++) {
-    String [] chars=split(metricsAsLines[i],',');
+    String [] chars=split(metricsAsLines[i],';');
     String name = chars[0];
     String revs = chars[1];
+    String colors = chars[2];
     
     String[] parts = split(name, "/");
     String shortName = parts[parts.length - 1];
     
-    MetricItem metric = new MetricItem(shortName, int(revs));
+    MetricItem metric = new MetricItem(shortName, int(revs), int(colors));
     mapData.addMetric(metric);
   }
   

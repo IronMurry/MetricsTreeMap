@@ -8,10 +8,11 @@
 class MetricItem extends SimpleMapItem {
   private final String artifact;
   private final int TEXT_MARGIN = 3;
+  private final int colorWeight;
 
-  public MetricItem(String artifact, int weight) {
+  public MetricItem(String artifact, int weight, int colors) {
     this.artifact = artifact;
-    
+    this.colorWeight = colors;
     setSize(weight); // controls the relative size of this item's box
   }
   
@@ -26,7 +27,7 @@ class MetricItem extends SimpleMapItem {
   
   private void drawAsRectangle() {
      strokeWeight(0.25);
-     int alphaChannelReflectWeight = (int)getSize()*2;
+     int alphaChannelReflectWeight = (int)colorWeight*2;
      fill(255, 0, 0, alphaChannelReflectWeight);
      rect(x, y, w, h);
   }
