@@ -43,14 +43,16 @@ int minFontSize = 1;
 PFont font;
 
 void setup() {
-  size(1920,1080);
-   
   font = createFont("miso-bold.ttf", 10);
   smooth();
 
   MetricMapModel mapData = buildModelFromMetrics(ReadInputLines("metric_data.csv"));
   mapData.finishAdd();
   map = new Treemap(mapData, 0, 0, width, height);
+}
+
+void settings() {
+  size(1920,1080);
 }
 
 String[] ReadInputLines(String csvFileName)
